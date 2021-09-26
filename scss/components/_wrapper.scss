@@ -2,18 +2,6 @@
   margin: 0 auto;
   max-width: 375px;
 
-  &__slider {
-    background-color: #123;
-  }
-
-  &__image-tile {
-    background-color: #234;
-  }
-
-  &__description {
-    background-color: #345;
-  }
-
   @include mq(large) {
     display: grid;
     grid-template-columns: 30% 40% 30%;
@@ -30,10 +18,10 @@
 
     &__image-tile {
       &:nth-child(1) {
-        grid-area: image1;
+        grid-area: image2;
       }
       &:nth-child(2) {
-        grid-area: image2;
+        grid-area: image1;
       }
     }
 
