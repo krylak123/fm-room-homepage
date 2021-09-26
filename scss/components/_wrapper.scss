@@ -1,0 +1,44 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: 375px;
+
+  &__slider {
+    background-color: #123;
+  }
+
+  &__image-tile {
+    background-color: #234;
+  }
+
+  &__description {
+    background-color: #345;
+  }
+
+  @include mq(large) {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      'slider slider slider'
+      'image1 desc image2';
+    max-width: 1440px;
+    height: 100vh;
+
+    &__slider {
+      grid-area: slider;
+    }
+
+    &__image-tile {
+      &:nth-child(1) {
+        grid-area: image1;
+      }
+      &:nth-child(2) {
+        grid-area: image2;
+      }
+    }
+
+    &__description {
+      grid-area: desc;
+    }
+  }
+}
