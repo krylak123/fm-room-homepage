@@ -1,0 +1,47 @@
+.menu {
+  display: none;
+  justify-content: space-between;
+  position: absolute;
+  padding: 30px 15px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-white;
+  z-index: 10;
+
+  &__close {
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__list-item {
+    margin-left: 10px;
+  }
+
+  &__link {
+    padding: 1px;
+    color: $color-black;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &.active {
+    display: flex;
+  }
+
+  @include mq(xxsmall) {
+    padding: 40px 25px;
+
+    &__list-item {
+      margin-left: 20px;
+    }
+
+    &__link {
+      padding: 3px;
+    }
+  }
+}

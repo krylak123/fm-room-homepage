@@ -1,0 +1,21 @@
+.header {
+  position: absolute;
+  padding: 40px 25px;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &__menu-open {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 600;
+    color: $color-white;
+  }
+}
