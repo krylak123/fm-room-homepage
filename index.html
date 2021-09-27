@@ -9,6 +9,7 @@
     <title>Room Homepage</title>
     <meta name="description" content="room homeppage">
     <meta name='robots' content="index,follow">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
     <link rel="stylesheet" href="./css/index.css">
 
@@ -36,7 +37,23 @@
             </nav>
         </header>
 
-        <div class="wrapper__slider slider">slider</div>
+        <div class="wrapper__slider slider">
+            <picture class="slider__image-wrap">
+                <source media="(min-width:1024px)" srcset="./images/desktop-image-hero-1.jpg" class="slider__image">
+                <img src="./images/mobile-image-hero-1.jpg" alt="photo of furniture" class="slider__image">
+            </picture>
+            <div class="slider__text-wrap">
+                <h1 class="slider__title">Discover innovative ways to decorate</h1>
+                <p class="slider__text">We provide unmatched quality, comfort, and style for property owners across the
+                    country.
+                    Our experts combine form and function in bringing your vision to life. Create a room in your
+                    own style with our collection and make your property a reflection of you and what you love.
+                </p>
+                <button class="slider__btn">Shop now
+                    <img src="./images/icon-arrow.svg" alt="arrow" class="slider__btn-icon">
+                </button>
+            </div>
+        </div>
 
         <div class="wrapper__image-tile image-tile">
             <img src="./images/image-about-dark.jpg" alt="dark furniture" class="image-tile__image">

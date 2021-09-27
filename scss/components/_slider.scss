@@ -1,0 +1,79 @@
+.slider {
+  &__image {
+    width: 100%;
+  }
+
+  &__text-wrap {
+    padding: 50px 25px;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    font-size: 1.7rem;
+  }
+
+  &__text {
+    margin-bottom: 30px;
+    color: $color-dark-grey;
+    line-height: 1.5rem;
+  }
+
+  &__btn {
+    display: block;
+    width: auto;
+    outline-style: none;
+    border-style: none;
+    background-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      letter-spacing: 3px;
+    }
+  }
+
+  @include mq(xxsmall) {
+    &__btn {
+      letter-spacing: 8px;
+      font-weight: 600;
+
+      &:hover {
+        letter-spacing: 6px;
+      }
+    }
+  }
+
+  @include mq(large) {
+    display: flex;
+
+    &__image-wrap {
+      flex-basis: 60%;
+      overflow: hidden;
+    }
+
+    &__image {
+      height: 100%;
+      width: auto;
+    }
+
+    &__text-wrap {
+      flex-basis: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 100px;
+    }
+
+    &__title {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    &__btn {
+      align-self: flex-start;
+    }
+  }
+}
