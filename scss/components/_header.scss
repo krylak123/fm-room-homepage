@@ -18,4 +18,20 @@
     font-weight: 600;
     color: $color-white;
   }
+
+  @include mq(large) {
+    display: flex;
+    align-items: center;
+    padding: 60px 70px;
+
+    &__menu-open {
+      display: none;
+    }
+
+    &__title {
+      margin-right: 50px;
+      text-align: left;
+      font-size: 2rem;
+    }
+  }
 }
