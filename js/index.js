@@ -70,7 +70,10 @@ class Slider {
     this.editValues(this.index);
   }
 
-  moveLeft() {
+  moveLeft(e) {
+    if (e.keyCode !== 37 && e.keyCode !== undefined) {
+      return;
+    }
     clearInterval(this.intervalIndex);
 
     this.index--;
@@ -84,7 +87,10 @@ class Slider {
     this.intervalIndex = setInterval(this.autoPlay.bind(this), 10000);
   }
 
-  moveRight() {
+  moveRight(e) {
+    if (e.keyCode !== 39 && e.keyCode !== undefined) {
+      return;
+    }
     clearInterval(this.intervalIndex);
 
     this.index++;
@@ -102,7 +108,9 @@ class Slider {
     this.intervalIndex = setInterval(this.autoPlay.bind(this), 10000);
 
     this.panelBtnLeft.addEventListener('click', this.moveLeft.bind(this));
+    window.addEventListener('keydown', this.moveLeft.bind(this));
     this.panelBtnRight.addEventListener('click', this.moveRight.bind(this));
+    window.addEventListener('keydown', this.moveRight.bind(this));
   }
 }
 
