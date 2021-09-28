@@ -81,7 +81,7 @@ class Slider {
 
     this.editValues(this.index);
 
-    this.intervalIndex = setInterval(this.autoPlay.bind(this), 5000);
+    this.intervalIndex = setInterval(this.autoPlay.bind(this), 10000);
   }
 
   moveRight() {
@@ -95,11 +95,11 @@ class Slider {
 
     this.editValues(this.index);
 
-    this.intervalIndex = setInterval(this.autoPlay.bind(this), 5000);
+    this.intervalIndex = setInterval(this.autoPlay.bind(this), 10000);
   }
 
   init() {
-    this.intervalIndex = setInterval(this.autoPlay.bind(this), 5000);
+    this.intervalIndex = setInterval(this.autoPlay.bind(this), 10000);
 
     this.panelBtnLeft.addEventListener('click', this.moveLeft.bind(this));
     this.panelBtnRight.addEventListener('click', this.moveRight.bind(this));
