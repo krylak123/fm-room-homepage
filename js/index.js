@@ -45,6 +45,7 @@ class Slider {
     this.text = document.querySelector('.slider__text');
 
     this.options = slides;
+    this.intervalIndex;
     this.index = 0;
 
     this.init();
@@ -59,17 +60,7 @@ class Slider {
     this.text.textContent = this.options[index].text;
   }
 
-  moveLeft() {
-    this.index--;
-
-    if (this.index < 0) {
-      this.index = this.options.length - 1;
-    }
-
-    this.editValues(this.index);
-  }
-
-  moveRight() {
+  autoPlay() {
     this.index++;
 
     if (this.index > this.options.length - 1) {
@@ -79,7 +70,37 @@ class Slider {
     this.editValues(this.index);
   }
 
+  moveLeft() {
+    clearInterval(this.intervalIndex);
+
+    this.index--;
+
+    if (this.index < 0) {
+      this.index = this.options.length - 1;
+    }
+
+    this.editValues(this.index);
+
+    this.intervalIndex = setInterval(this.autoPlay.bind(this), 5000);
+  }
+
+  moveRight() {
+    clearInterval(this.intervalIndex);
+
+    this.index++;
+
+    if (this.index > this.options.length - 1) {
+      this.index = 0;
+    }
+
+    this.editValues(this.index);
+
+    this.intervalIndex = setInterval(this.autoPlay.bind(this), 5000);
+  }
+
   init() {
+    this.intervalIndex = setInterval(this.autoPlay.bind(this), 5000);
+
     this.panelBtnLeft.addEventListener('click', this.moveLeft.bind(this));
     this.panelBtnRight.addEventListener('click', this.moveRight.bind(this));
   }
