@@ -1,7 +1,7 @@
 //! Handled mobile menu
 
 const handleToggleMenu = () => {
-  document.querySelector('.menu').classList.toggle('active');
+  document.querySelector('.menu').classList.toggle('menu--open');
 };
 
 document
