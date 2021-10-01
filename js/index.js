@@ -1,3 +1,6 @@
+//! Set Viewport
+const vp1280 = window.matchMedia('screen and (min-width: 1280px)');
+
 //! Handled mobile menu
 
 const handleToggleMenu = () => {
@@ -52,9 +55,9 @@ class Slider {
   }
 
   editValues(index) {
-    if (window.innerWidth < 1280)
-      this.imageMobile.src = this.options[index].imageMobile;
-    else this.imageDesktop.srcset = this.options[index].imageDesktop;
+    if (vp1280.matches)
+      this.imageDesktop.srcset = this.options[index].imageDesktop;
+    else this.imageMobile.src = this.options[index].imageMobile;
 
     this.title.textContent = this.options[index].title;
     this.text.textContent = this.options[index].text;
