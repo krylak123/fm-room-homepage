@@ -1,6 +1,3 @@
-//! Set Viewport
-const vp1280 = window.matchMedia('screen and (min-width: 1280px)');
-
 //! Handled mobile menu
 
 const handleToggleMenu = () => {
@@ -47,6 +44,8 @@ class Slider {
     this.title = document.querySelector('.slider__title');
     this.text = document.querySelector('.slider__text');
 
+    this.vp1280 = window.matchMedia('screen and (min-width: 1280px)');
+
     this.options = slides;
     this.intervalIndex;
     this.index = 0;
@@ -55,9 +54,11 @@ class Slider {
   }
 
   editValues(index) {
-    if (vp1280.matches)
+    if (this.vp1280.matches) {
       this.imageDesktop.srcset = this.options[index].imageDesktop;
-    else this.imageMobile.src = this.options[index].imageMobile;
+    } else {
+      this.imageMobile.src = this.options[index].imageMobile;
+    }
 
     this.title.textContent = this.options[index].title;
     this.text.textContent = this.options[index].text;
@@ -114,6 +115,8 @@ class Slider {
     window.addEventListener('keydown', this.moveLeft.bind(this));
     this.panelBtnRight.addEventListener('click', this.moveRight.bind(this));
     window.addEventListener('keydown', this.moveRight.bind(this));
+
+    this.vp1280.addEventListener('change', () => this.editValues(this.index));
   }
 }
 
