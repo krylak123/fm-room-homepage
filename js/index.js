@@ -39,10 +39,11 @@ class Slider {
     this.panelBtnLeft = document.querySelector('.slider__panel-btn--left');
     this.panelBtnRight = document.querySelector('.slider__panel-btn--right');
 
-    this.imageMobile = document.querySelector('img.slider__image');
-    this.imageDesktop = document.querySelector('source.slider__image');
+    this.imageContainer = document.querySelector('.slider__image-wrap');
     this.title = document.querySelector('.slider__title');
     this.text = document.querySelector('.slider__text');
+
+    this.image = document.createElement('img');
 
     this.vp1280 = window.matchMedia('screen and (min-width: 1280px)');
 
@@ -53,11 +54,24 @@ class Slider {
     this.init();
   }
 
+  startValues(index) {
+    this.image.classList.add('slider__image');
+    this.image.alt = 'photo of furniture';
+
+    if (this.vp1280.matches) {
+      this.image.src = this.options[index].imageDesktop;
+    } else {
+      this.image.src = this.options[index].imageMobile;
+    }
+
+    this.imageContainer.appendChild(this.image);
+  }
+
   editValues(index) {
     if (this.vp1280.matches) {
-      this.imageDesktop.srcset = this.options[index].imageDesktop;
+      this.image.src = this.options[index].imageDesktop;
     } else {
-      this.imageMobile.src = this.options[index].imageMobile;
+      this.image.src = this.options[index].imageMobile;
     }
 
     this.title.textContent = this.options[index].title;
@@ -109,14 +123,15 @@ class Slider {
   }
 
   init() {
-    this.intervalIndex = setInterval(this.autoPlay.bind(this), 10000);
-
     this.panelBtnLeft.addEventListener('click', this.moveLeft.bind(this));
     window.addEventListener('keydown', this.moveLeft.bind(this));
     this.panelBtnRight.addEventListener('click', this.moveRight.bind(this));
     window.addEventListener('keydown', this.moveRight.bind(this));
-
     this.vp1280.addEventListener('change', () => this.editValues(this.index));
+
+    this.startValues(this.index);
+
+    this.intervalIndex = setInterval(this.autoPlay.bind(this), 10000);
   }
 }
 
