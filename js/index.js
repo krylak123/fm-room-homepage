@@ -1,18 +1,3 @@
-//! Handled mobile menu
-
-const handleToggleMenu = () => {
-  document.querySelector('.menu').classList.toggle('menu--open');
-};
-
-document
-  .querySelector('.header__menu-open')
-  .addEventListener('click', handleToggleMenu);
-document
-  .querySelector('.menu__close')
-  .addEventListener('click', handleToggleMenu);
-
-//! Handled slider
-
 const slideOptions = [
   {
     imageMobile: './images/mobile-image-hero-1.jpg',
@@ -34,6 +19,22 @@ const slideOptions = [
   },
 ];
 
+class ToggleMenu {
+  constructor() {
+    this.menu = document.querySelector('.menu');
+    this.btnOpen = document.querySelector('.header__menu-open');
+    this.btnClose = document.querySelector('.menu__close');
+  }
+
+  toggler() {
+    this.menu.classList.toggle('menu--open');
+  }
+
+  init() {
+    this.btnOpen.addEventListener('click', this.toggler.bind(this));
+    this.btnClose.addEventListener('click', this.toggler.bind(this));
+  }
+}
 class Slider {
   constructor(slides) {
     this.panelBtnLeft = document.querySelector('.slider__panel-btn--left');
@@ -50,8 +51,6 @@ class Slider {
     this.options = slides;
     this.intervalIndex;
     this.index = 0;
-
-    this.init();
   }
 
   startValues(index) {
@@ -135,4 +134,18 @@ class Slider {
   }
 }
 
-const slider = new Slider(slideOptions);
+class Main {
+  constructor(slideOptions) {
+    this.handleMenu = new ToggleMenu();
+    this.handleSlider = new Slider(slideOptions);
+  }
+
+  init() {
+    this.handleMenu.init();
+    this.handleSlider.init();
+  }
+}
+
+const main = new Main(slideOptions);
+
+main.init();
